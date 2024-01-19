@@ -1,0 +1,93 @@
+package com.myweb.www.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.myweb.www.domain.BoardDTO;
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.domain.FileVO;
+import com.myweb.www.domain.PagingVO;
+import com.myweb.www.repository.BoardDAO;
+import com.myweb.www.repository.FileDAO;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+
+@RequiredArgsConstructor
+@Slf4j
+@Service
+public class BoardServiceImpl implements BoardService {
+	
+	private final BoardDAO bdao;
+	private final FileDAO fdao;
+
+	@Transactional
+	@Override
+	public int register(BoardDTO bdto) {
+		log.info("★★★★ board service register ★★★★");
+		int isOk = bdao.insert(bdto.getBvo());
+		
+		if(bdto.getFlist() == null) {
+			return isOk;
+		}
+		if(isOk>0 && bdto.getFlist().size()>0) {
+			long bno = bdao.selectBno();
+			for(FileVO fvo : bdto.getFlist()) {
+				fvo.setBno(bno);
+				isOk *= fdao.insert(fvo);
+			}
+		}
+		
+		return isOk;
+	}
+
+	@Override
+	public List<BoardVO> getList(PagingVO pgvo) {
+		log.info("★★★★ board service list ★★★★");
+		bdao.updateCmtQty();
+		bdao.updateHasFile();
+		return bdao.selectList(pgvo);
+	}
+	
+	@Transactional
+	@Override
+	public BoardDTO getDetail(long bno) {
+		log.info("★★★★ board service detail ★★★★");
+		bdao.updateReadCount(bno);
+		BoardVO bvo = bdao.selectOne(bno);
+		List<FileVO> flist = fdao.selectList(bno);
+		BoardDTO bdto = new BoardDTO(bvo, flist);
+		return bdto;
+	}
+	
+	@Transactional
+	@Override
+	public int modify(BoardDTO bdto) {
+		log.info("★★★★ board service modify ★★★★");
+		int isOk = bdao.update(bdto.getBvo());
+		
+		return 
+	}
+
+	@Override
+	public int remove(long bno) {
+		log.info("★★★★ board service remove ★★★★");
+		return bdao.remove(bno);
+	}
+
+	@Override
+	public int getTotalCount(PagingVO pgvo) {
+		log.info("★★★★ board service totalCount ★★★★");
+		return bdao.getTotalCount(pgvo);
+	}
+
+	@Override
+	public int removeFile(String uuid) {
+		log.info("★★★★ board service removeFile ★★★★");
+		return fdao.delete(uuid);
+	}
+
+}

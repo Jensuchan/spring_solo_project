@@ -1,0 +1,31 @@
+package com.myweb.www;
+
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.myweb.www.domain.BoardVO;
+import com.myweb.www.repository.BoardDAO;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {com.myweb.www.config.RootConfig.class})
+public class BoardTest {
+	
+	private BoardDAO bdao;
+	
+	
+	public void insertBoard() {
+		for(int i=1; i<=300; i++) {
+			BoardVO bvo = new BoardVO();
+			bvo.setTitle("test"+i);
+			bvo.setWriter("젠수테스트");
+			bvo.setContent("testContent"+i);
+			bdao.insert(bvo);
+		}
+	}
+
+
+}

@@ -1,0 +1,13 @@
+
+1월 17, 2024 09:43:28.859 NEW SESSION
+1월 17, 2024 09:43:28.859 [10020:6940:0117/094328.859:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 09:43:31.37 [10020:6940:0117/094331.036:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+
+1월 17, 2024 12:16:59.405 NEW SESSION
+1월 17, 2024 12:16:59.405 [10708:4520:0117/121659.404:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 12:22:00.295 [10708:4520:0117/122200.295:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 13:41:43.737 [10708:4520:0117/134143.736:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 13:57:05.265 [10708:4520:0117/135705.265:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 13:57:40.809 [10708:4520:0117/135740.809:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 13:58:06.479 [10708:4520:0117/135806.479:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)
+1월 17, 2024 14:15:25.191 [10708:4520:0117/141525.191:ERROR:CONSOLE(0)] "ReferenceError: dragEvent is not defined", source:  (0)

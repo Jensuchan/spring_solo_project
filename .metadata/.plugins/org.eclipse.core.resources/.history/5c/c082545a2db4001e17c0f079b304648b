@@ -1,0 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
+<jsp:include page="layout/header.jsp"></jsp:include>
+
+<div>
+	<h1>젠수의 개인 작업물</h1>
+	
+	
+</div>
+
+
+<jsp:include page="layout/footer.jsp"></jsp:include>

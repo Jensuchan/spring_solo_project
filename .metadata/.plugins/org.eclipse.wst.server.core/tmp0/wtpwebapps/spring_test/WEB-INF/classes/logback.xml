@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="true">
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <!-- encoders are  by default assigned the type
+         ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+    <encoder>
+      <pattern>%d %5p [%c] %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!-- d는 날짜 p는 띄어쓰기 c는 어디서온건지 msg는 메세지 n은 줄넘김 -->
+  
+  <logger name="com.myweb.www" level="info" appender-ref="STDOUT"></logger>
+  <logger name="org.springframework" level="info" appender-ref="STDOUT"></logger>
+  <logger name="org.springframework.jdbc" level="info" appender-ref="STDOUT"></logger>
+  <logger name="jdbc.sqlonly" level="info" appender-ref="STDOUT"></logger>
+  <logger name="jdbc.resultsettable" level="info" appender-ref="STDOUT"></logger>
+
+  <root level="info">
+    <appender-ref ref="STDOUT" />
+  </root>
+</configuration>

@@ -1,0 +1,72 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>	
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<jsp:include page="../layout/header.jsp"></jsp:include>
+	
+	
+	
+
+<div class="container">
+	<h1>게시물 수정</h1><br>
+	<c:set value="${bdto.bvo }" var="bvo"></c:set>
+	<form action="/board/modify" method="post" id="modForm" enctype="multipart/form-data">
+		<div class="mb-3">
+			<label for="bno" class="form-label">게시물번호</label>
+			<input type="text" name="bno" class="form-control" id="bno" value="${bvo.bno }" readonly="readonly">
+		</div>
+		<div class="mb-3">
+			<label for="title" class="form-label">제목</label>
+			<input type="text" name="title" class="form-control" id="title" value="${bvo.title }">
+		</div>
+		<div class="mb-3">
+			<label for="writer" class="form-label">작성자</label>
+			<input type="text" name="writer" class="form-control" id="writer" value="${bvo.writer }">
+		</div>
+		<div class="mb-3">
+			<label for="content" class="form-label">내용</label>
+			<input type="text" name="content" class="form-control" id="content" value="${bvo.content }">
+		</div>
+		
+		<c:set value="${bdto.flist }" var="flist" />
+	<div class="col-12">
+		<label for="f" class="form-label"></label>
+		<ul class="list-group list-group-flush">
+			<c:forEach items="${flist }" var="fvo">
+	 			 <li class="list-group-item">
+	 			 	<c:choose>
+	 			 		<c:when test="${fvo.fileType == 1 }">
+	 			 			<div>
+	 			 				<img alt="" src="/upload/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}">
+	 			 			</div>
+	 			 		</c:when>
+	 			 	</c:choose>
+	 			 	<div class="ms-2 me-auto">
+	 			 		<div class="fw-bold">${fvo.fileName }</div>
+	 			 		<span class="badge rounded-pill text-bg-secondary">${fvo.fileSize }Byte</span>
+	 			 		<button type="button" data-uuid="${fvo.uuid }" class="btn btn-sm btn-outline-danger file-x">삭제</button>
+	 			 	</div>
+	 			 </li>
+			</c:forEach>
+  		</ul>
+	</div>
+		
+		
+			<div class="mb-3">
+		<input type="file" name="files" class="form-control" id="files" multiple style="display: none"> <br>
+		<button type="button" class="btn btn-warning" id="trigger">파일</button>
+	</div> 
+	<!-- 파일 목록 표시라인 -->
+ 	<div class="mb-3" id="fileZone"></div> 
+	
+ 	<button type="submit" class="btn btn-success" id="regBtn">modify</button>
+	<a href="/board/list"><button type="button" class="btn btn-primary">list</button></a>
+	<a href="/board/list"><button type="button" class="btn btn-dark">취소</button></a>
+	</form>
+</div>
+
+
+<script src="../resources/js/boardRegister.js"></script>
+<script src="../resources/js/boardModify.js"></script>
+
+<jsp:include page="../layout/footer.jsp"></jsp:include>

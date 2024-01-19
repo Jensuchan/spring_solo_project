@@ -1,0 +1,9 @@
+package com.myweb.www.service;
+
+
+
+public interface MemberService {
+
+	String confirm(String email);
+
+}
