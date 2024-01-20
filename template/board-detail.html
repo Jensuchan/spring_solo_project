@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jensu's Spring Solo Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/spring_test/src/main/webapp/resources/css/main.css"
+    />
+  </head>
+  <body>
+    <!-- header.jsp -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <span class="icon material-symbols-outlined"> psychiatry </span>
+          <span class="label">SPRING</span>
+        </a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/board/list">게시판 보기</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="/board/register">게시판글쓰기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/member/detail">내정보보기</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/member/logout">로그아웃</a>
+          </li>
+          <a href="/member/logout"
+            ><button type="button" hidden id="trigger"></button
+          ></a> -->
+          <li class="nav-item">
+            <a class="nav-link" href="/member/register">회원가입</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/member/login">로그인</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- //header.jsp -->
+
+    <div class="container">
+      <section class="bbs-wrap">
+        <div class="bbs-info">
+          <p class="badge rounded-pill text-bg-primary">No. 12314</p>
+          <h2>게시글 제목입니다.</h2>
+          <ul>
+            <li>작성자명</li>
+            <li>2024.01.20 16:21</li>
+          </ul>
+        </div>
+        <div class="bbs-content">
+          <div>안녕하세요 게시글 내용을 작성해보겠습니다.</div>
+          <div class="attachments">
+            <h4>첨부파일</h4>
+            <!-- <c:set value="${bdto.flist }" var="flist"></c:set> -->
+            <ul class="list-group">
+              <!-- <c:forEach items="${flist }" var="fvo"> -->
+              <!-- <li class="list-group-item">
+               <c:choose>
+	 			 		<c:when test="${fvo.fileType == 1 }">
+	 			 			<div>
+	 			 				<img alt="" src="/upload/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}">
+	 			 			</div>
+	 			 		</c:when>
+	 			 		<c:otherwise>
+	 			 			<div>
+	 			 				<a href="/upload/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}" download="다운로드_테스트">
+								</a>
+	 			 			</div>
+	 			 		</c:otherwise>
+	 			 	</c:choose>
+	 			 	<div class="ms-2 me-auto">
+	 			 		<div class="fw-bold">${fvo.fileName }</div>
+	 			 		<span class="badge rounded-pill text-bg-secondary">${fvo.fileSize }Byte</span>
+	 			 	</div> 
+              </li>-->
+              <li class="list-group-item">
+                <div>
+                  <img
+                    alt=""
+                    src="/upload/${fvo.saveDir }/${fvo.uuid}_th_${fvo.fileName}"
+                  />
+                </div>
+                <span class="fw-bold">sample.png</span>
+                <span class="badge rounded-pill text-bg-secondary"
+                  >84723 Byte</span
+                >
+              </li>
+              <li class="list-group-item">
+                <span class="fw-bold"
+                  ><a
+                    href="/upload/${fvo.saveDir }/${fvo.uuid}_${fvo.fileName}"
+                    download="다운로드_테스트"
+                    >테스트파일.txt</a
+                  ></span
+                >
+                <span class="badge rounded-pill text-bg-secondary"
+                  >32 Byte</span
+                >
+              </li>
+              <!-- </c:forEach> -->
+            </ul>
+          </div>
+        </div>
+        <div class="bbs-btn-list">
+          <c:choose>
+            <c:when test="${bvo.writer == authNick }">
+              <a href="/board/modify?bno=${bvo.bno }"
+                ><button type="button" class="btn btn-warning">수정</button></a
+              >
+              <a id="delA"
+                ><button type="button" class="btn btn-danger delA">
+                  삭제
+                </button></a
+              >
+            </c:when>
+          </c:choose>
+          <a href="/board/list"
+            ><button type="button" class="btn btn-dark">돌아가기</button></a
+          >
+        </div>
+        <div class="bbs-reply">
+          <h3>댓글</h3>
+          <div class="reply-write">
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="cmtWriter">댓글 닉네임 </span>
+              <input
+                type="text"
+                class="form-control"
+                id="cmtText"
+                aria-label="Amount (to the nearest dollar)"
+              />
+              <button type="button" class="btn btn-primary" id="cmtPostBtn">
+                등록
+              </button>
+            </div>
+          </div>
+          <ul class="list-group list-group-flush" id="cmtListArea">
+            <li class="list-group-item">
+              <div class="mb-3">
+                <div class="reply-info">
+                  <span class="fw-bold">Writer</span>
+                  <span class="badge rounded-pill text-bg-light"
+                    >2024.01.21 13:03</span
+                  >
+                </div>
+                <p>Content</p>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="mb-3">
+                <div class="reply-info">
+                  <span class="fw-bold">Writer</span>
+                  <span class="badge rounded-pill text-bg-light"
+                    >2024.01.21 13:03</span
+                  >
+                </div>
+                <p>Content</p>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <div class="mb-3">
+                <div class="reply-info">
+                  <span class="fw-bold">Writer</span>
+                  <span class="badge rounded-pill text-bg-light"
+                    >2024.01.21 13:03</span
+                  >
+                </div>
+                <p>Content</p>
+              </div>
+            </li>
+          </ul>
+          <!-- 댓글 더보기 버튼 -->
+          <div>
+            <button
+              type="button"
+              id="moreBtn"
+              data-page="1"
+              class="btn btn-outline-dark"
+              style="visibility: visible"
+            >
+              더보기 <span class="material-symbols-outlined">expand_more</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="modal" id="myModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">작성자</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" id="cmtTextMod" />
+                <button type="button" class="btn btn-primary" id="cmtModBtn">
+                  수정
+                </button>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                닫기
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer.jsp -->
+    <footer class="footer">
+      <div class="container">
+        <copyright>Jensu copyright. &copy; All rights reserved.</copyright>
+      </div>
+    </footer>
+    <!-- //footer.jsp -->
+  </body>
+</html>
