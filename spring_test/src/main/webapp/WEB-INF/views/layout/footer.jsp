@@ -1,13 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<br><br>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="/">푸터푸터푸터푸터푸터푸터</a>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			</div>
-		</div>
-	</nav>
+<footer class="footer">
+	<div class="container">
+		<copyright>Jensu copyright. &copy; All rights reserved.</copyright>
+	</div>
+</footer>
 </body>
 </html>
