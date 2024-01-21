@@ -81,6 +81,7 @@ h4 {
 
 /* board-detail */
 .bbs-wrap {
+    min-height: calc(100vh - 280px);
 }
 .bbs-info {
     padding: 24px 0 4px;
@@ -150,4 +151,41 @@ h4 {
     justify-content: center;
     align-items: center;
     border-color: #dedede;
+}
+
+/* board-list*/
+.search-box .form-select {
+    max-width: 250px;
+}
+.search-box .badge {
+    z-index: 100;
+}
+.bbs-list {
+    margin-bottom: 32px;
+}
+.table-custom tbody tr td {
+    --bs-table-bg-state: #fff;
+}
+.table-custom tbody tr:hover td {
+    --bs-table-bg-state: #f9f8f7;
+}
+.table tbody a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.table .comment,
+.table .attachment {
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.table .comment .icon,
+.table .attachment .icon {
+    font-size: 18px;
 }
